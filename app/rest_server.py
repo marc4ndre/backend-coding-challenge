@@ -1,30 +1,24 @@
 from flask import Flask
-from flask import request, jsonify
+from flask_restful import Api
 from app.db import Database
+from app.endpoint import EndPoint
+
+import os
 
 
 class RestServer:
+    DEFAULT_DB_NAME = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'data', 'cities_canada-usa.tsv')
 
     def __init__(self):
-
         self.app = Flask(__name__)
+        self.api = Api(self.app)
         self.database = Database()
-        self.database.load()
+        self.api.add_resource(EndPoint, '/suggestions', resource_class_kwargs={'db': self.database})
 
-        @self.app.route('/suggestions', methods=['GET'])
-        def get():
-           latitude = request.args.get('latitude')
-           longitude = request.args.get('longitude')
-           name = request.args.get('q')
-
-           print('name {} latitude {} longitude {}'.format(name, latitude, longitude))
-
-           cities = self.database.get(name)
-
-           for city in cities:
-               city.compute_score(latitude, longitude)
-
-           return jsonify(self.database.get(name, latitude, longitude))
+    def load_db(self, name=DEFAULT_DB_NAME):
+        self.database.load(name)
 
     def run(self):
         self.app.run(debug=True)
+
+
