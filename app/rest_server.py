@@ -1,17 +1,17 @@
-from flask import Flask
 from flask_restful import Api
 from app.db import Database
 from app.endpoint import EndPoint
 
 import os
+import logging
 
 
 class RestServer:
     DEFAULT_DB_NAME = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'data', 'cities_canada-usa.tsv')
 
-    def __init__(self):
-        self.app = Flask(__name__)
-        self.api = Api(self.app)
+    def __init__(self, application):
+        self.application = application
+        self.api = Api(self.application)
         self.database = Database()
         self.api.add_resource(EndPoint, '/suggestions', resource_class_kwargs={'db': self.database})
 
@@ -19,6 +19,6 @@ class RestServer:
         self.database.load(name)
 
     def run(self):
-        self.app.run(debug=True)
+        self.application.run(debug=True)
 
 

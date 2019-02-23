@@ -23,6 +23,7 @@ class Database:
             reader = csv.DictReader(tsvfile, dialect='excel-tab')
 
             for row in reader:
+
                 self.cities.append(City(row['name'],
                                         float(row['lat']),
                                         float(row['long']),

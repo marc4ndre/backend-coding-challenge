@@ -5,7 +5,7 @@ from webargs import fields, validate
 from webargs.flaskparser import use_kwargs, abort
 
 import operator
-import logging
+# import logging
 
 
 class EndPoint(Resource):
@@ -21,7 +21,7 @@ class EndPoint(Resource):
 
     @use_kwargs(get_args)
     def get(self, q, latitude=None, longitude=None):
-        logging.info('GET suggestions?q={}&latitude={}&longitude={}'.format(q, latitude, longitude))
+        # logging.info('GET suggestions?q={}&latitude={}&longitude={}'.format(q, latitude, longitude))
 
         cities = self.db.get(q)
 
