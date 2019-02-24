@@ -1,5 +1,8 @@
 # Coveo Backend Coding Challenge
 
+# Requirements
+- pip install awsebcli
+
 # Setup
 To prepare your setup for deployment, follow those simples steps:
 

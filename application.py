@@ -10,12 +10,12 @@ DATE_FMT = '%m/%d/%Y %H:%M:%S'
 loglevel = logging.DEBUG
 logging.basicConfig(format=FORMAT, datefmt=DATE_FMT, level=loglevel)
 
-DEFAULT_DB_NAME = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'data', 'cities_canada-usa.tsv')
+DEFAULT_DB_NAME = os.path.join(os.path.dirname(__file__), 'data', 'cities_canada-usa.tsv')
 
 application = Flask(__name__)
 
+rest_server = RestServer(application)
+rest_server.load_db(DEFAULT_DB_NAME)
 
 if __name__ == "__main__":
-    rest_server = RestServer(application)
-    rest_server.load_db(DEFAULT_DB_NAME)
     application.run()
