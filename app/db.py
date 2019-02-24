@@ -18,6 +18,11 @@ class Database:
         self.cities = []
 
     def load(self, filename):
+        """
+        Load the received filename and fill the cities list
+        :param filename: filename database
+        :return: none
+        """
 
         with open(filename) as tsvfile:
             reader = csv.DictReader(tsvfile, dialect='excel-tab')

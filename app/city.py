@@ -2,7 +2,12 @@
 
 class City:
     """
-    City class
+    City class contains the following attributes:
+
+    name: city name. format is city, state/province, country (string)
+    latitude: latitude position (float)
+    longitude: longitude position (float)
+    score: score computed when a suggestion request is made (float)
     """
 
     def __init__(self, name, latitude, longitude, state_province, country):
@@ -12,6 +17,13 @@ class City:
         self.score = 0
 
     def compute_score(self, name, latitude, longitude):
+        """
+        One third of the score goes for name, latitude and longitude respectively.
+        :param name: city suggestion received
+        :param latitude: latitude suggestion received
+        :param longitude: longitude suggestion received
+        :return:
+        """
         ratio = 1 / 3
 
         self.score = len(name) / len(self.name) * ratio
@@ -27,6 +39,10 @@ class City:
             self.score += (1 - pct) * ratio
 
     def to_json(self):
+        """
+        Convert a city object to json
+        :return: json
+        """
         return {'name': self.name,
                 'latitude': self.latitude,
                 'longitude': self.longitude,
