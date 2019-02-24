@@ -10,7 +10,7 @@ import logging
 
 class EndPoint(Resource):
     """
-    The EndPoint class is used when the url path is /suggestions
+    The EndPoint class is a flask endpoint resource used when the url path is /suggestions
     """
 
     get_args = {
