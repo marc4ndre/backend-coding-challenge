@@ -1,5 +1,7 @@
 # Coveo Backend Coding Challenge
 
+This Rest API has been developped over flask environment and is deployed on aws elastic beanstalk. 
+
 # Requirements
 - pip install awsebcli
 
