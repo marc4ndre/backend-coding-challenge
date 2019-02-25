@@ -17,7 +17,7 @@ class Suggestion:
         :param name: suggestion name (string)
         :param latitude: latitude (float)
         :param longitude: longitude (float)
-        :return:
+        :return: dictionary
         """
 
         cities = self.db.get(name)

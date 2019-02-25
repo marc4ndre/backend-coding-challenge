@@ -3,7 +3,7 @@
 # Requirements
 - pip install awsebcli
 
-# Setup
+# Local setup
 To prepare your setup for deployment, follow those simples steps:
 
 - create a virtual environment
@@ -20,7 +20,7 @@ $ pip install -r requirements.txt
 ```
 
 # Deployment
-Starting deployment
+Starting deployment on aws elastic beanstalk ( make sure to install requirements first )
 ```bash
 $ eb create [environment]
 ```
